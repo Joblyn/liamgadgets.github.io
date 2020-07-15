@@ -1,181 +1,441 @@
-* {
-    margin: 0
-}
-body{
-    background-color: rgb(255, 255, 255);
+*{
     margin: 0;
-    white-space: 0;
-}
-.topbar {
+    padding: 0;
+    white-space: normal;
+  }
+  .container-fluid{
+    padding: 0!important;
+    margin: 0!important; 
+  }
+  .row{
+    margin: 0!important;
+    /* border: 2px solid black; */
+  }
+  .contact{
     position: relative;
-    top: 0;
-    padding: 0 1em;
-    background-color: white;
-    border-bottom: rgb(151, 150, 150) 1px solid;
-}
-.topbar div{
-    display: inline-block;
-}
-#line{
-    position: relative;
-    top: 15px;
-    background-color: rgb(52, 98, 136);
-    width: 5px;
-    height: 60px;
-}
-/* .div-logo{
-    border-left: 5px solid rgb(52, 98, 136);
-} */
-.div-logo img{
-    width: 80px;
-    height: auto;
-}
-.div-logo h1 p{
-    position: absolute;
-    top: 30px;
-    left: 100px;
-    font-size: 40px;
-    color: rgb(52, 98, 136);
-}
-.top-right{
-    font-family: "Padauk Book", "Noto Mono";
-    position: absolute;
-    top: 20px;
-    right: 5%;
-    
-}
-.top-right div{
-    display: inline-block;
-    cursor: pointer;
-}
-.ordernow{
-    font-weight: 600;
-    padding: 0.5em 0.8em;
-    background-color:  rgb(52, 98, 136);
-    color: white;
-    text-transform: uppercase;
-    margin-left: 1em;
-}
-.ordernow:hover{
-    transform: scale(1.1);
-   box-shadow: 2px 2px 2px #000000;
-   transition: all ease-out 280ms;
-}
-#home{
-    font-size: 20px;
-}
-#home:hover{
-    font-size: 23px;
-    font-weight: bolder;
-    transition: all ease-out 200ms;
-}
-.grid-container{
-    height: 80vh;
-
-}
-.hometext{
-    padding-top: 10px;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 40%;
-    height: 100%;
-    font-family: "Roboto", Sans-serif;
-    font-size: 50px;
-    font-weight: 600;
-}
-.hometext .anim{
-    color: rgb(0, 86, 245);
-}
-.carousel{
-    position:absolute;
-    right: 30px;
-    top: 25vh;
-    width: 50%;
-    height: 70vh;
-}
-#text{
-    font-size: 35px;
-}
-#order{
-    font-size: 30px;
-    width:250px;
-    margin-left: 20px; 
-    padding: 10px 0;
-    text-align: center;
-    background-color: rgb(52, 98, 136);
-    color: white;
-}
-#order:hover{
-    background-color: rgb(92, 90, 90);
-    cursor: pointer;
-    transition: all 1s;
-}
-.icons{
-    display: flex;
-    justify-content: row;
-    position: fixed;
-    top: 11vh;
-    right: 30px;
-    margin-top: 30px;
-    font-size: 40px;
-    z-index: 997;
-}
-@media (min-width: 1270px){
-    .icons{
-        top: 12vh;
-        right: 15vh;
-    }
-}
-.icon{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 20px;
-    /* border: #fff solid 1px; */
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    border-radius: 15px;
-}
-.icon a{
-    color: inherit;
-} 
-.whatsapp{
-    color: green;
-}
-.whatsapp:hover{
-    background-color: darkgreen;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
     color: white;
-    transition: all 0.5s;
-}
-.facebook{
-    color: blue;
-}
-.facebook:hover{
-    background-color: blue;
-    color: white;
-    transition: all 0.5s;
-}
-.instagram{
-    color: rgb(180, 16, 48)
-}
-.instagram:hover{
-    background-color: crimson;
-    color: whitesmoke;
-    transition: all 0.5s;
-}
-/* #footer{
-    position: absolute;
-    bottom: 0;
+  }
+  .contact:hover{
+    padding: 5px 0;
+    background-color: whitesmoke;
+    border: 2px solid black;
+    color:#bb0e0e;
+    transition: all linear 100ms;
+    cursor: pointer;
+  }
+  #menubar{
+    display: none;
+  }
+  #overlayOnFormPopup{
+    position: fixed;
     width: 100%;
-    padding: 15px 0;
-    margin: 0;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: none;
+  }
+  @media (max-width: 1030px){
+    #contact{
+      font-size: 20px;
+    }
+  }
+   @media (max-width:800px){
+    #contact{
+      display: none;
+    }
+    nav ul a li{
+      text-decoration: none;
+      color: black;
+    }
+    .contact a{
+      color:rgb(175, 45, 45);
+    }
+    #menubar{
+      display: block;
+      position: absolute;
+      right: 2%;
+    }
+    .contact:hover{
+      cursor: pointer;
+      padding: 5px 0;
+      background-color: inherit;
+      border:  none;
+      color:#bb0e0e;
+      transition: all linear 100ms;
+    }
+    #menubar:hover{
+      display: block;
+      position: absolute;
+      right: 2%;
+    }
+  }
+  .container-fluid{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(121.04deg, #FFFFFF 45.27%, rgba(255, 255, 255, 0.0658309) 45.27%, rgba(255, 255, 255, 0.0360277) 72.34%, rgba(255, 255, 255, 0) 83.03%), #e72626;
+  }
+  header{
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+    z-index: 100;
+    border-bottom: 2px solid black;
+  }
+  main{
+    position: relative;
+  }
+  nav{
+    position: relative;
+    left: 0;
+    display: block;
+    width: 100%;
+    padding-left: 50px;
+    background-color: white;
+    font-size: 30px;
+    z-index: 1000;
+    color: black;
+    text-transform: capitalize;
+    border-top: 0px solid grey;
+    display: none;
+  }
+  .menu{
+    display: block;
+  }
+  #form{
+    z-index: 1000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Roboto", Sans-serif;
+    font-size: 30px;
     text-align: center;
-    background-color: rgb(92, 90, 90);
-    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    min-width: 400px;
+    padding: 10px 0; 
+    border: black 2px solid;
+    border-radius: 4px; 
+    background-color: rgb(52, 98, 136);
     color: white;
-}
-#footer strong{
-    color: blue;
-} */
+    display: none;
+  }
+  #form .icon{
+  position: absolute;
+  top:0px;
+  right: 4px;
+  color: black;
+  opacity: 0.4;
+  font-size: 20px;
+  }
+  #form .icon:hover{
+    cursor: pointer;
+    opacity: 1;
+  }
+  #form #email{
+    font-size: 20px;
+    margin: 10px 0;
+    text-align: center;
+    width: 70%;
+    padding: 5px 0;
+    border: 2px solid rgb(92, 90, 90);
+    border-radius: 5px;
+    color: black;
+  }
+  #form #subscribe{
+    font-family: "Roboto", Sans-serif;
+    font-weight: 550;  
+  }
+  #form #submit{
+    font-size: 18px;
+    width: 140px;
+    padding: 10px 0;
+    border: solid 2px rgb(52, 98, 136);
+    border-radius: 10px;
+    background-color:black;
+    color:white;
+  }
+  #form #submit:hover{
+    border: solid 2px rgb(52, 98, 136);
+    background-color: rgb(92, 90, 90);
+    box-shadow: 2px 2px 2px black;
+  }
+  #social-icons{
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+    width: 60px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+  }
+  #instagram, #whatsapp, #facebook{
+    height: 45px;
+    margin-bottom: 20px;
+  }
+  .icons:hover{
+    transform: scale(1.1);
+    transition: all linear 0.05s ;
+  }
+  #instagram, #whatsapp, #facebook :hover{
+    cursor: pointer;
+    animation: size1 1s 0.7s infinite;
+  }
+  
+  #instagram  img{
+    width: 138%;
+    position: relative;
+    right: 1px;
+  }
+  #whatsapp img{
+    position: absolute;
+    right: -9px;
+    width: 100%;
+    animation: size1 1s 0.5s infinite; 
+  }
+  #facebook img{
+    width: 125%;
+    animation: size1 1s 0.3s infinite;
+  }
+  @media (max-width: 800px){
+    #instagram img{
+      right: 250px;
+    }
+    #whatsapp img{
+     right: 30px;
+     transform: scale(1.2); 
+    }
+    #facebook img{
+      position: absolute;
+      width: 135%;
+      right: 130px;
+      bottom: -4px;
+    }
+    #right{
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .content{
+      padding-top: 1000px;
+    }
+    #social-icons{
+      flex-direction: row;
+      bottom: 20px;
+    }
+  }
+  #logo{
+    border: none !important;
+  }
+  #logo-img{
+    border: none !important;
+    height: 100%;
+  }
+  #logo-img img{
+    width: 30%;
+    height: auto;
+    min-width: 250px;
+  }
+  #left{
+    position: relative;
+    padding-left: 2%;
+    padding-top: 15px;
+  }
+  .content{
+    padding-top: 0px;
+    position: absolute;
+    width:100%;
+  }
+  p{
+    font-size: 52px;
+    font-family: 'Bitter', serif;
+    font-style: normal;
+    font-weight: 600;
+    width: 100%;
+    height: 40vh;
+    line-height: 65px;
+  }
+  @media (max-width: 800px){
+    p{
+      font-size: 30px;
+    }
+  }
+  p .first{
+    color: inherit;
+  }
+  p .txt-rotate{
+    color: rgb(23, 23, 136);
+  }
+  #left .order{
+    position: relative;
+    top: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    color: black;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin-top: 20%;
+    background-color: rgb(15, 136, 22);
+    padding: 10px 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    width: 250px;
+    text-transform: capitalize;
+    border-radius: 5px;
+  }
+  #left .order i{
+    position: relative;
+    margin-left: 30px;
+  }
+  #left .order .move{
+    animation: move 0.5s infinite;
+  }
+  @keyframes move{
+    0%{
+      left: 0;
+    }
+    50%{
+      left: 5px;
+    }
+    100%{
+      left: 0;
+    }
+  }
+  #left .order:hover{
+    animation: none;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 800px){
+    #left .order{
+      position: absolute;
+      top: 90%;
+      left: 15%;
+    }
+  }
+  .carousel-item{
+    animation: grow 12s infinite;
+  }
+  @keyframes grow{
+    0%{
+      transform: scale(1);
+    }
+    100%{
+      transform: scale(1.1);
+    }
+  }
+  @media (max-width: 800px){
+    .carousel-item{
+      max-width: 100%;
+    }
+  }
+  footer{
+    background: black;
+    border: 1px 0px 0px 0px solid !important;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+    z-index: 100;
+  }
+  footer span{
+    font-size: 1.2em;
+    font-weight: 500;
+    margin: 5px;
+  }
+  a{
+    text-decoration: none;
+  }
+  .contact a{
+    color: white;
+  }
+  @media (max-width: 800px){
+    .content{
+      z-index: 100;
+    }
+    footer{
+      font-size: 20px;
+    }
+    #iphone{
+      height: 100%;
+      position: relative;
+      left:-140px;
+      top: 20px;
+      min-width: 100%;
+    }
+    #samsung{
+      position: relative;
+      min-width: 85%;
+      top: 20px;
+      left:-120px;
+    }
+    #macbook{
+      height: auto;
+      position: relative;
+      min-width: 130%;
+      top: 20px;
+      left: -100px;
+    }
+    #iwatch1{
+      position: relative;
+      min-width: 90%;
+      left: -80px;
+    }
+    #airpod{
+      position: relative;
+      min-width: 75%;
+      left: -50px;
+    }
+    #ps4{
+      position: relative;
+      min-width: 140%;
+      left: -120px;
+    }
+    #iwatch2{
+      position: relative;
+      min-width: 120%;
+      left: -100px;
+    }
+    #overlay{
+      position: absolute;
+      width: 100%;
+      /* height: 100vh; */
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(rgb(0,0,0,0.5), rgb(0,0,0,0.5), rgb(0,0,0,0.5),rgb(0,0,0,0.5), rgb(0,0,0,0.5),rgb(0,0,0,0.9), white, white);
+      z-index: 2;
+    }
+    .container-fluid{
+      background: none;
+    }
+    header{
+      background-color:white;
+    }
+    a{
+      color: #e72626 !important;
+    }
+    .content{
+      text-align: center;
+    }
+  
+    p{
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 50px;
+      width: 100%;
+      color: wheat
+    }
+  }

@@ -1,64 +1,134 @@
-let i = 0;
-let speed = 300;
-let txt=`Iphones | Samsung | Laptops | and accessories`;
-const typing = ()=>{
-    if (i < txt.length){
-        document.querySelector(".anim").innerHTML += txt.charAt(i);
-        i++;
-        setTimeout(typing, speed);
+var TxtRotate = function(el, toRotate, period) {
+    this.toRotate = toRotate;
+    this.el = el;
+    this.loopNum = 0;
+    this.period = parseInt(period, 10) || 10;
+    this.txt = '';
+    this.tick();
+    this.isDeleting = false;
+  };
+  
+  TxtRotate.prototype.tick = function() {
+    var i = this.loopNum % this.toRotate.length;
+    var fullTxt = this.toRotate[i];
+  
+    if (this.isDeleting) {
+      this.txt = fullTxt.substring(0, this.txt.length - 1);
+    } else {
+      this.txt = fullTxt.substring(0, this.txt.length + 1);
     }
-}
-typing();
-// anime.timeline({loop: true})
-//   .add({
-//     targets: '.ml15 .word',
-//     scale: [14,1],
-//     opacity: [0,1],
-//     easing: "easeOutCirc",
-//     duration: 800,
-//     delay: (el, i) => 800 * i
-//   }).add({
-//     targets: '.ml15',
-//     opacity: 0,
-//     duration: 1000,
-//     easing: "easeOutExpo",
-//     delay: 1000
-//   });
-// let text1="Need a reliable store for UK used electronics?";
-// let text2="Worry no more!!!";
-// let text3="liam Gadgets";
-// let text4="got you covered...";
-
-// let cont = document.querySelector('.hometext');
-// const typingEffect =()=>{
-// 	 const type1 =()=>{
-//     if(i<text1.length){
-//         cont.innerHTML += text1.charAt(i);
-// 		  i++;
-// 		}
-// 		setTimeout(type1, 80);
-// 	}
-// 	 const type2=()=>{
-// 		type1();
-// 		console.log("I'm done");
-// 	}
-// 	  type2(); 
-// } 
-// typingEffect();
-
-// let i =0;
-// let images = [];
-// let time = 500;
-// images[0] = 'image1.jpeg';
-// images[1] ='image2.jpg';
-// images[2] ='image3.jpg';
-// const changeImg = ()=>{
-// 	document.slide.src = images[i];
-// 	if(i < images.length -1){
-// 		i++;
-// 	} else {
-// 		i=0;
-// 	}
-// 	setTimeout(changeImg(), time);
-// }
-// window.onload =  changeImg;
+  
+    this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+  
+    var that = this;
+    var delta = 300 - Math.random() * 100;
+  
+    if (this.isDeleting) { delta /= 2; }
+  
+    if (!this.isDeleting && this.txt === fullTxt) {
+      delta = this.period;
+      this.isDeleting = true;
+    } else if (this.isDeleting && this.txt === '') {
+      this.isDeleting = false;
+      this.loopNum++;
+      delta = 500;
+    }
+  
+    setTimeout(function() {
+      that.tick();
+    }, delta);
+  };
+  
+  window.onload = function() {
+    var elements = document.getElementsByClassName('txt-rotate');
+    for (var i=0; i<elements.length; i++) {
+      var toRotate = elements[i].getAttribute('data-rotate');
+      var period = elements[i].getAttribute('data-period');
+      if (toRotate) {
+        new TxtRotate(elements[i], JSON.parse(toRotate), period);
+      }
+    }
+    // INJECT CSS
+    var css = document.createElement("style");
+    css.type = "text/css";
+    css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+    document.body.appendChild(css);
+  };
+  
+  //menu bar 
+  var icon = document.querySelector("#menubar");
+  var i = document.querySelector("#icon")
+  const show = ()=>{
+    nav = document.querySelector('nav');
+    if(nav.className!=="menu"){
+    nav.classList.add("menu");
+    i.className='fa fa-times';
+    i.classList.remove("fa-bars");
+    } else{
+      nav.classList.remove("menu");
+      i.classList.remove("fa-times");
+      i.classList.add("fa-bars");
+    }
+  }
+  icon.addEventListener("click", show);
+  // const menuClose=()=>{
+  //   const nav = document.querySelector('nav');
+  //   if(nav.className==="menu"){
+  //     i.classList.remove("fa-times");
+  //     i.classList.add("fa-bars");
+  //   }
+  // }
+  // i.addEventListener("click", menuClose)
+  
+  // popuform
+  const overlayOnPopupForm = document.querySelector("#overlayOnFormPopup");
+  const popupForm = () => {
+    form.style.display =  "block";
+    overlayOnPopupForm.style.display = "block";
+  }
+  $(document).ready(setTimeout(popupForm, 8000));
+  
+    // grab email
+  const input = document.getElementById("email");
+  const emailLength = () => input.value.length;
+  const grabEmail = () => {
+    const EmailArr = [];
+    const email = () => input.value;
+    EmailArr.push(email);
+    form.innerHTML = "Thanks for Subscribing!";
+  }
+  const formClose = () => {
+    form.style.display = "none";
+    overlayOnPopupForm.style.display = "none";
+  }
+    // on submit-click
+  const grabEmailonClick = () => {
+    if(emailLength() > 0) {
+        grabEmail();
+        setTimeout(formClose, 1000);
+    }  
+  }
+  const submit = document.getElementById("submit");
+  submit.addEventListener("click", grabEmailonClick);
+  
+    // on "Enter" key-press
+  const grabEmailAfterKeypress = (event) => {
+    if (emailLength() > 0 && event.which === 13) {
+       grabEmail();
+       setTimeout(formClose, 1000);
+    }
+  }
+  input.addEventListener("KeyPress", grabEmailAfterKeypress);
+  document.querySelector(".icon").addEventListener("click", formClose);
+  
+  // order button animation
+  const order = document.querySelector('.order');
+  let ordericon = document.querySelector('.fa-long-arrow-right');
+  const move = ()=>{
+    ordericon.classList.add("move");
+  }
+  const out = ()=>{
+      ordericon.classList.remove("move");
+  }
+  order.addEventListener('mouseover', move);
+  order.addEventListener('mouseleave', out);
