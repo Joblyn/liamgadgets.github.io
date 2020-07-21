@@ -92,11 +92,29 @@ var TxtRotate = function(el, toRotate, period) {
   const input = document.getElementById("email");
   const emailLength = () => input.value.length;
   const grabEmail = () => {
-    const EmailArr = [];
-    const email = () => input.value;
-    EmailArr.push(email);
+    const email = input.value;
+    console.log(email);
+
+    const data = { Emails: email };
+
+    fetch('https://emaillistings.herokuapp.com/api/v1/update', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+
     form.innerHTML = "Thanks for Subscribing!";
   }
+  
   const formClose = () => {
     form.style.display = "none";
     overlayOnPopupForm.style.display = "none";
